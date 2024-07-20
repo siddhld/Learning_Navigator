@@ -1,7 +1,7 @@
-package com.navigator.controller;
+package com.crio.learning_navigator.controller;
 
-import com.navigator.model.Exam;
-import com.navigator.service.ExamService;
+import com.crio.learning_navigator.model.Exam;
+import com.crio.learning_navigator.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

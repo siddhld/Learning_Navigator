@@ -1,10 +1,10 @@
-package com.navigator;
+package com.crio.learning_navigator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class NavigatorApplicationTests {
+class LearningNavigatorApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,10 +1,8 @@
-package com.navigator.service;
+package com.crio.learning_navigator.service;
 
-
-import com.navigator.model.Subject;
-import com.navigator.repository.SubjectRepository;
-import com.navigator.service.SubjectService;
-import com.navigator.exception.ResourceNotFoundException;
+import com.crio.learning_navigator.model.Subject;
+import com.crio.learning_navigator.repository.SubjectRepository;
+import com.crio.learning_navigator.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

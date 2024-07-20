@@ -1,14 +1,10 @@
-package com.navigator.service;
+package com.crio.learning_navigator.service;
 
 
-import com.navigator.model.Student;
-import com.navigator.model.Subject;
-import com.navigator.model.Exam;
-import com.navigator.repository.StudentRepository;
-import com.navigator.repository.SubjectRepository;
-import com.navigator.repository.ExamRepository;
-import com.navigator.service.StudentService;
-import com.navigator.exception.ResourceNotFoundException;
+import com.crio.learning_navigator.exception.DataAlreadyExistException;
+import com.crio.learning_navigator.model.*;
+import com.crio.learning_navigator.repository.*;
+import com.crio.learning_navigator.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,7 +48,6 @@ public class StudentServiceImpl implements StudentService {
     public Student updateStudent(Long id, Student studentDetails) {
         Student student = getStudentById(id);
         student.setName(studentDetails.getName());
-        student.setRegistrationId(studentDetails.getRegistrationId());
         return studentRepository.save(student);
     }
 
@@ -69,8 +64,16 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public Student enrollStudentInSubject(Long studentId, Long subjectId) {
-        Student student = getStudentById(studentId);
+    public Student enrollStudentInSubject(Long registrationId, Long subjectId) {
+        Student student = getStudentById(registrationId);
+
+        boolean subjectFound = student.getEnrolledSubjects().stream()
+                .anyMatch(subject -> subjectId.equals(subject.getSubjectId()));
+
+        if (subjectFound) {
+            throw new DataAlreadyExistException("Subject with ID " + subjectId + " is already enrolled.");
+        }
+
         Subject subject = subjectRepository.findById(subjectId)
                 .orElseThrow(() -> new ResourceNotFoundException("Subject not found with id: " + subjectId));
 
@@ -80,8 +83,16 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public Student registerStudentForExam(Long studentId, Long examId) {
-        Student student = getStudentById(studentId);
+    public Student registerStudentForExam(Long registrationId, Long examId) {
+        Student student = getStudentById(registrationId);
+
+        boolean examFound = student.getRegisteredExams().stream()
+                .anyMatch(exam -> examId.equals(exam.getExamId()));
+
+        if (examFound) {
+            throw new DataAlreadyExistException("Exam with ID " + examId + " is already registered.");
+        }
+
         Exam exam = examRepository.findById(examId)
                 .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + examId));
 

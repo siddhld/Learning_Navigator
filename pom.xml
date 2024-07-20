@@ -8,11 +8,11 @@
 		<version>3.3.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.navigator</groupId>
-	<artifactId>Navigator</artifactId>
+	<groupId>com.crio</groupId>
+	<artifactId>learning-navigator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Navigator</name>
-	<description>Project for Spring Boot Navigator</description>
+	<name>learning-navigator</name>
+	<description>Springboot Learning Navigator Project</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -27,6 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
+
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
@@ -61,14 +62,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

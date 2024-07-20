@@ -1,8 +1,7 @@
-package com.navigator.controller;
+package com.crio.learning_navigator.controller;
 
-import com.navigator.model.Student;
-import com.navigator.service.StudentService;
-import com.navigator.exception.ResourceNotFoundException;
+import com.crio.learning_navigator.model.Student;
+import com.crio.learning_navigator.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,15 +49,15 @@ public class StudentController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/{studentId}/enroll/{subjectId}")
-    public ResponseEntity<Student> enrollStudentInSubject(@PathVariable Long studentId, @PathVariable Long subjectId) {
-        Student enrolledStudent = studentService.enrollStudentInSubject(studentId, subjectId);
+    @PostMapping("/{registrationId}/enroll/{subjectId}")
+    public ResponseEntity<Student> enrollStudentInSubject(@PathVariable Long registrationId, @PathVariable Long subjectId) {
+        Student enrolledStudent = studentService.enrollStudentInSubject(registrationId, subjectId);
         return ResponseEntity.ok(enrolledStudent);
     }
 
-    @PostMapping("/{studentId}/register/{examId}")
-    public ResponseEntity<Student> registerStudentForExam(@PathVariable Long studentId, @PathVariable Long examId) {
-        Student registeredStudent = studentService.registerStudentForExam(studentId, examId);
+    @PostMapping("/{registrationId}/register/{examId}")
+    public ResponseEntity<Student> registerStudentForExam(@PathVariable Long registrationId, @PathVariable Long examId) {
+        Student registeredStudent = studentService.registerStudentForExam(registrationId, examId);
         return ResponseEntity.ok(registeredStudent);
     }
 }

@@ -1,6 +1,7 @@
-package com.navigator.service;
+package com.crio.learning_navigator.service;
 
-import com.navigator.model.Exam;
+import com.crio.learning_navigator.model.Exam;
+
 import java.util.List;
 
 public interface ExamService {

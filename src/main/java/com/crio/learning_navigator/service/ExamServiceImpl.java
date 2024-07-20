@@ -1,9 +1,9 @@
-package com.navigator.service;
 
-import com.navigator.model.Exam;
-import com.navigator.repository.ExamRepository;
-import com.navigator.service.ExamService;
-import com.navigator.exception.ResourceNotFoundException;
+package com.crio.learning_navigator.service;
+
+import com.crio.learning_navigator.exception.ResourceNotFoundException;
+import com.crio.learning_navigator.model.Exam;
+import com.crio.learning_navigator.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
